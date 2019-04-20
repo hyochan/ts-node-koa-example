@@ -3,10 +3,10 @@ import app from '../src';
 
 const testServer = request.agent(app);
 
-describe('[sample] apis', () => {
-  it('should GET /sample', async () => {
-    const result = await testServer.get('/sample');
-    expect(result.text).toEqual("Hello Sample!");
+describe('[index] apis', () => {
+  it('should GET /', async () => {
+    const result = await testServer.get('/');
+    expect(result.text).toEqual("Hello World!");
     expect(result.status).toEqual(200);
   });
   afterAll(async (done) => {
