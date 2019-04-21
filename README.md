@@ -1,5 +1,5 @@
 # ts-node-example
-Typescript node application with koa.
+Minimal typescript node application with koa.
 
 ## Specification
 You need to know about below techniques in able to understand the server specifications comfortably.
@@ -8,3 +8,4 @@ You need to know about below techniques in able to understand the server specifi
 * [jest](https://jestjs.io)
 * [supertest](https://github.com/visionmedia/supertest)
 * [koa](https://koajs.com/)
+* [standardjs](https://standardjs.com)
