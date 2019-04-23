@@ -1,16 +1,16 @@
-import * as request from 'supertest'
-import app from '../src'
+import * as request from 'supertest';
+import app from '../src';
 
-const testServer = request.agent(app)
+const testServer = request.agent(app);
 
 describe('[index] apis', () => {
-  it('should GET /', async () => {
-    const result = await testServer.get('/')
-    expect(result.text).toEqual('Hello World!')
-    expect(result.status).toEqual(200)
-  })
-  afterAll(async (done) => {
-    app.close()
-    done()
-  })
-})
+  it('should GET /', async() => {
+    const result = await testServer.get('/');
+    expect(result.text).toEqual('Hello World!');
+    expect(result.status).toEqual(200);
+  });
+  afterAll(async(done) => {
+    app.close();
+    done();
+  });
+});
