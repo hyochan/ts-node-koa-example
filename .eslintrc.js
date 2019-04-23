@@ -8,8 +8,8 @@ module.exports =  {
     "jest": true
   },
   parserOptions:  {
-    ecmaVersion:  2017,  // Allows for the parsing of modern ECMAScript features
-    sourceType:  'module',  // Allows for the use of imports
+    ecmaVersion: 2017,
+    sourceType: 'module',
   },
   rules:  {
     "no-unused-vars": 0,
