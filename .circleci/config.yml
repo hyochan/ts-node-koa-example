@@ -1,26 +1,42 @@
-codecov:
-  notify:
-    require_ci_to_pass: yes
+version: 2
+jobs:
+  node:
+    working_directory: ~/ts-node-example
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
 
-coverage:
-  precision: 2
-  round: down
-  range: "70...100"
+      - restore_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
 
-  status:
-    project: yes
-    patch: yes
-    changes: no
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
 
-parsers:
-  gcov:
-    branch_detection:
-      conditional: yes
-      loop: yes
-      method: no
-      macro: no
+      - run: yarn install
 
-comment:
-  layout: "header, diff"
-  behavior: default
-  require_changes: no
+      - save_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - run:
+          name: jest tests
+          command: |
+            yarn run test:coverage
+
+      - run:
+          name: coverage
+          command: |
+            yarn run coverage
+
+workflows:
+  version: 2
+  node:
+    jobs:
+      - node
