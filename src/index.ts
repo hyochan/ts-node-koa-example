@@ -1,17 +1,21 @@
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
 
-import SampleRouter from './sample';
+import PublicRouter from './routers/public';
+import ApiRouter from './routers/api';
+import cors = require('@koa/cors');
 
 const app = new Koa();
-const router = new Router();
+app.use(cors());
 
-router.get('/*', async(ctx) => {
+const router = new Router();
+router.get('/', async(ctx) => {
   ctx.body = 'Hello World!';
 });
 
-app.use(SampleRouter.routes());
 app.use(router.routes());
+app.use(ApiRouter.routes());
+app.use(PublicRouter.routes());
 
 export default app.listen(3000);
 
