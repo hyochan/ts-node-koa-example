@@ -1,8 +1,9 @@
 import * as Router from 'koa-router';
+import jwt from '../../middlewares/jwt';
 
 const router = new Router();
 
-router.get('/sample', async(ctx) => {
+router.get('/sample', jwt, async(ctx) => {
   ctx.body = 'Hello Sample!';
 });
 
