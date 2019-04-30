@@ -33,7 +33,7 @@ jobs:
       - run:
           name: coverage
           command: |
-            yarn run codecov
+            yarn run codecov -- -t cc807b99-5d4f-49b6-9a28-8357f399cdec
 
 workflows:
   version: 2
